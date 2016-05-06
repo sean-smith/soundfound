@@ -1,0 +1,5 @@
+# Ignore the music directory to avoid the evil people at the RIAA
+
+music/*
+__pycache__
+
