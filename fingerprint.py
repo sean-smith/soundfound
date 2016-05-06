@@ -42,9 +42,12 @@ def graphFingerPrint(fp, fp2=None):
 	plt.show()
 
 
-def getFingerPrint(path):
+def getFingerPrint(path, start=None, end=None):
 	print("Creating fingerprint of ",path)
 	X = au.readWaveFile(path)
+	if start != None:
+		if end != None:
+			X = X[(SR*start):(SR*end)]
 	l = len(X)
 	i = 0
 	fp = []
@@ -69,6 +72,16 @@ def diff(l1, l2):
 		for j in range(r):
 			sum += abs(l1[i][j] - l2[i][j])
 	return sum
+
+def diff_intersection(l1, l2):
+	s = 0
+	for i in range(len(l1)):
+		s += sum(frozenset(l1[i]).intersection(l2[i]))
+	return s
+
+def samples_to_seconds(samples):
+	return (samples*WINDOW_SIZE) / (SR*2)
+
 
 # compares fingerprint 2 to fingerprint 1, sliding it over the entire thing
 # returns time, accuracy pair
