@@ -38,6 +38,7 @@ I'm going to implement constellation hashing similar to what Shazam does to spee
 ### Results
 
 I created a small test database of 8 songs and fed in 
+
 | Song | Training Duration | Predicted Song | 
 | --- | --- | --- |
 | Alessia_Cara_-_Here.fp | 4 | Alessia_Cara_-_Here |
