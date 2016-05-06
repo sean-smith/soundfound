@@ -37,7 +37,17 @@ I'm going to implement constellation hashing similar to what Shazam does to spee
 
 ### Results
 
-
+I created a small test database of 8 songs and fed in 
+| Song | Training Duration | Predicted Song | 
+| --- | --- | --- |
+| Alessia_Cara_-_Here.fp | 4 | Alessia_Cara_-_Here |
+| Alesso_-_Heroes_(we_could_be).fp | 4 | Alesso_-_Heroes_(we_could_be)|
+| Andy_Grammer_-_Honey,_I'm_Good..fp | 4 | Cage_The_Elephant_-_Back_Against_the_Wall |
+| Big_Sean_-_I_Don't_Fuck_With_You.fp | 4 | Big_Sean_-_I_Don't_Fuck_With_You |
+| Big_Wild_-_Aftergold.fp | 4 | Alessia_Cara_-_Here |
+| Big_Wild_-_Aftergold_(feat._Tove_Styrke).fp | 4 | Alessia_Cara_-_Here |
+| Cage_The_Elephant_-_Back_Against_the_Wall.fp | 4 | Cage_The_Elephant_-_Back_Against_the_Wall |
+| Calvin_Harris_-_Outside.fp | 4 | Calvin_Harris_-_Outside |
 
 
 ### To run
