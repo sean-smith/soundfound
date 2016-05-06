@@ -44,15 +44,15 @@ def search_db(fp2):
 
 print(bcolors.OKGREEN + "Welcome to SoundFound ..." + bcolors.ENDC)
 print(bcolors.OKBLUE+"Please play a song starting now\n===================="+bcolors.ENDC)
-record_to_file('tmp.wav')
+# record_to_file('tmp.wav')
 print("Done - result written to tmp.wav")
 
-fp2 = fpu.getFingerPrint("tmp.wav")
+# fp2 = fpu.getFingerPrint("tmp.wav")
 # fp2 = fpu.getFingerPrint("music/wav/Cage_The_Elephant_-_Back_Against_the_Wall.wav", start=4, end=9)
 # search_db(fp2)
 # fp2 = fpu.getFingerPrint("music/wav/Alesso_-_Heroes_(we_could_be).wav", start=4, end=9)
 # search_db(fp2)
-# fp2 = fpu.getFingerPrint("music/wav/Big_Wild_-_Aftergold.wav", start=4, end=9)
+fp2 = fpu.getFingerPrint("music/wav/Big_Wild_-_Aftergold.wav", start=4, end=9)
 # search_db(fp2)
 # fp2 = fpu.getFingerPrint("music/wav/Big_Sean_-_I_Don't_Fuck_With_You.wav", start=4, end=9)
 # search_db(fp2)

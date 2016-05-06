@@ -4,17 +4,40 @@ Runs a fingerprinting algorithm on input music in order to determine the song na
 
 ### Methodology
 
-I take each song that I'd like to add to the database and I runs realFFT on each song with a window size of `4096` and a slide value of `2048`.
+I take each song that I'd like to add to the database and I run realFFT on each song with a window size of `4096` and a slide value of `2048`.
 
-We generate a spectogram like this for each song:
+I generate a spectogram like this for each song:
 
 ![spectrogram](spectrogram.png)
 
-From that spectrogram I hash the values in a window of [WINDOW_SIZE] using the Shazam constellation model.
+I then store that spectrogram in a `songname.fp` file and I put it in my `database/` directory.
+
+Once `createdb.py` is finished creating a directory of songs, I can run `find.py` which will record a several second snippet and store that audio in a file called `tmp.wav`. I then run `fingerprint.py` to generate the fp, though this time I don't store it in a file. 
+
+Once I have both fingerprints, I run a function in `fingerprint.py`, `def match(fp1, fp2)`. This takes two fingerprints and sums the absolute difference between fingerprint 1 and fingerprint 2. See the code below for my simple difference function.
+
+	def diff(l1, l2):
+		sum = 0
+		for i in range(len(l1)):
+			r = min(len(l1[i]), len(l2[i]))
+			for j in range(r):
+				sum += abs(l1[i][j] - l2[i][j])
+		return sum
+
+I then iterate over the length of fingerprint 1, dragging fingureprint 2 across and computing the difference at each time step, then I append that to an array.
+
+Once I've done the whole song, I take the smallest value in that array and computing the best match time by converting from the index of that sample into time. 
+
+I repeat this process for every song until I have an array of (songname, difference_term, time) tuples. I then take the lowest tuple in that array and return that as the best match song to the user.
+
+I'm going to implement constellation hashing similar to what Shazam does to speed up the search process.
 
 ![spectrogram](spectrogram_constellation.png)
 
-I took the largest peak at the start of the window and I computed the distance between that point and all the points within the window. I then took that difference and hashed it.
+
+### Results
+
+
 
 
 ### To run
@@ -50,3 +73,6 @@ Assumes a structure of folders as follows:
 
 ### References
 
+* http://willdrevo.com/fingerprinting-and-audio-recognition-with-python/
+
+* http://www.cs.bu.edu/~snyder/cs591/Lectures/FingerPrintingLecture2.pdf
