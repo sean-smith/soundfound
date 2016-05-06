@@ -1,6 +1,7 @@
 import subprocess
 from os import walk
 import fingerprint as fputil
+import pickle
 
 f = []
 for (dirpath, dirnames, filenames) in walk("music/wav"):
@@ -11,7 +12,6 @@ print("Creating fp's of files in", dirpath)
 for filename in filenames:
 	print(dirpath + "/" + filename, " -> ", "database/" + filename[0:len(filename)-4] +".fp")
 	subprocess.call(['touch', "database/" + filename[0:len(filename)-4] +".fp"])
+	subprocess.call(['chmod', "+w" ,"database/" + filename[0:len(filename)-4] +".fp"])
 	fp = fputil.getFingerPrint(dirpath + "/" + filename)
-	f = open( "database/" + filename[0:len(filename)-4] +".fp")
-	f.write(str(fp))
-	f.close()
+	pickle.dump(fp, "database/" + filename[0:len(filename)-4] +".fp")

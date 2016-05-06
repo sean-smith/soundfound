@@ -51,7 +51,7 @@ def getFingerPrint(path):
 	while i <= (l - 4096): 
 		P = realFFT(X[i:(i+WINDOW_SIZE)])
 		p = pickPeaks(P)
-		print(p)
+		# print(p)
 		fp.append(sorted(p))
 		# au.graphSpectrum(X[i:(i+WINDOW_SIZE)])
 		i += SLIDE_INTERVAL
@@ -83,20 +83,20 @@ def match(fp1, fp2):
 
 	return diff_list
 
-fp1 = getFingerPrint("music/BluesGuitar.wav")
+# fp1 = getFingerPrint("music/BluesGuitar.wav")
 
 
-fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
-graphFingerPrint(fp1)
+# fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
+# graphFingerPrint(fp1)
 
-Y = match(fp1, fp2)
-X = [(x*WINDOW_SIZE) / (SR*2) for x in range(len(Y))]
-plt.plot(X,Y)
-plt.show()
+# Y = match(fp1, fp2)
+# X = [(x*WINDOW_SIZE) / (SR*2) for x in range(len(Y))]
+# plt.plot(X,Y)
+# plt.show()
 
-val, idx = min((val, idx) for (idx, val) in enumerate(Y))
+# val, idx = min((val, idx) for (idx, val) in enumerate(Y))
 
-print((idx*WINDOW_SIZE) / (SR*2), val)
+# print((idx*WINDOW_SIZE) / (SR*2), val)
 
 # print("matching the files.")
 

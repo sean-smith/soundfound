@@ -1,6 +1,10 @@
 # SoundFound
 
-Runs a fingerprinting algorithm on input music in order to determine the song name and the position in the song.
+Runs a fingerprinting algorithm on input music in order to determine the song name and the position in the song. Runs realFFT on each song with a window size of `4096` and a slide value of `2048`.
+
+We generate a spectogram like this for each song:
+
+![spectrogram](spectrogram.png)
 
 
 ### To run
