@@ -83,10 +83,10 @@ def match(fp1, fp2):
 
 	return diff_list
 
-# fp1 = getFingerPrint("music/BluesGuitar.wav")
+fp1 = getFingerPrint("music/BluesGuitar.wav")
 
 
-# fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
+fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
 # graphFingerPrint(fp1)
 
 # Y = match(fp1, fp2)
