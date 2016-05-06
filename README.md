@@ -1,10 +1,20 @@
 # SoundFound
 
-Runs a fingerprinting algorithm on input music in order to determine the song name and the position in the song. Runs realFFT on each song with a window size of `4096` and a slide value of `2048`.
+Runs a fingerprinting algorithm on input music in order to determine the song name and the position in the song. 
+
+### Methodology
+
+I take each song that I'd like to add to the database and I runs realFFT on each song with a window size of `4096` and a slide value of `2048`.
 
 We generate a spectogram like this for each song:
 
 ![spectrogram](spectrogram.png)
+
+From that spectrogram I hash the values in a window of [WINDOW_SIZE] using the Shazam constellation model.
+
+![spectrogram](spectrogram_constellation.png)
+
+I took the largest peak at the start of the window and I computed the distance between that point and all the points within the window. I then took that difference and hashed it.
 
 
 ### To run
@@ -37,4 +47,6 @@ Assumes a structure of folders as follows:
 		wav/
 			songname1.wav
 			songname2.wav
+
+### References
 

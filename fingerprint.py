@@ -59,6 +59,7 @@ def getFingerPrint(path):
 	print("Generated", len(fp), "windows.")
 	return fp
 
+
 # Gets the difference between two lists of lists
 # the number of lists is garaunteed to be the same
 def diff(l1, l2):
@@ -70,7 +71,7 @@ def diff(l1, l2):
 	return sum
 
 # compares fingerprint 2 to fingerprint 1, sliding it over the entire thing
-# returns a list of numbers
+# returns time, accuracy pair
 def match(fp1, fp2):
 	lfp1 = len(fp1)
 	lfp2 = len(fp2)
@@ -81,22 +82,26 @@ def match(fp1, fp2):
 		diff_list.append(diff(fp1[i:(i+len(fp2))], fp2))
 		i += 1
 
-	return diff_list
+	
+	val, idx = min((val, idx) for (idx, val) in enumerate(diff_list))
+	return ((idx*WINDOW_SIZE) / (SR*2), val)
 
-fp1 = getFingerPrint("music/BluesGuitar.wav")
+# fp1 = getFingerPrint("music/BluesGuitar.wav")
 
 
-fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
-# graphFingerPrint(fp1)
+# fp2 = getFingerPrint("music/BluesGuitar1_2.wav")
+# # graphFingerPrint(fp1)
 
 # Y = match(fp1, fp2)
+# print ("Match at time ", Y[0], "certainty", Y[1])
+
 # X = [(x*WINDOW_SIZE) / (SR*2) for x in range(len(Y))]
 # plt.plot(X,Y)
 # plt.show()
 
-# val, idx = min((val, idx) for (idx, val) in enumerate(Y))
+# 
 
-# print((idx*WINDOW_SIZE) / (SR*2), val)
+# print()
 
 # print("matching the files.")
 
